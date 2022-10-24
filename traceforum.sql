@@ -1,101 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 3.3.9
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Sep 23, 2013 at 10:54 
--- Server version: 5.5.8
--- PHP Version: 5.3.5
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `traceforum`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `activite`
---
-
-CREATE TABLE IF NOT EXISTS `activite` (
-  `IDAct` int(11) NOT NULL AUTO_INCREMENT,
-  `Titre` varchar(120) NOT NULL DEFAULT '',
-  `TypeAct` tinyint(4) NOT NULL DEFAULT '0',
-  `IDCat` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IDAct`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
-
---
--- Dumping data for table `activite`
---
-
-INSERT INTO `activite` (`IDAct`, `Titre`, `TypeAct`, `IDCat`) VALUES
-(1, 'Visiter un lien hypertexte', 0, 1),
-(2, 'Afficher une structure (cours,forum)', 0, 1),
-(3, 'Afficher les titres des message d''un forum', 1, 1),
-(4, 'Afficher le contenu d''un message', 1, 2),
-(5, 'Connexion', 0, 3),
-(6, 'Plier et deplier l''aborescence d''une structure', 2, 1),
-(7, 'Bouger la ScrollBar', 2, 1),
-(8, 'Bouger la Scrollbar en bas (afficher la fin d''un message)', 2, 1),
-(9, 'Repondre a un message', 1, 2),
-(10, 'Poster un nouveau message', 1, 2),
-(11, 'Modifier le thème de forum', 0, 4);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categorie`
---
-
-CREATE TABLE IF NOT EXISTS `categorie` (
-  `IDCat` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `Titre` varchar(120) NOT NULL DEFAULT '',
-  PRIMARY KEY (`IDCat`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `categorie`
---
-
-INSERT INTO `categorie` (`IDCat`, `Titre`) VALUES
-(1, 'Parcours du forum'),
-(2, 'Operation sur les messages de communication'),
-(3, 'Communication privee'),
-(4, 'Personnalisation IHM');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transition`
---
-
-CREATE TABLE IF NOT EXISTS `transition` (
-  `IDTran` bigint(20) NOT NULL AUTO_INCREMENT,
-  `Utilisateur` varchar(70) NOT NULL DEFAULT '',
-  `Titre` varchar(120) NOT NULL DEFAULT '',
-  `Attribut` varchar(200) DEFAULT NULL,
-  `Date` date NOT NULL DEFAULT '0000-00-00',
-  `Heure` time NOT NULL DEFAULT '00:00:00',
-  `Delai` time DEFAULT NULL,
-  `RefTran` bigint(20) DEFAULT '0',
-  `Commentaire` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`IDTran`,`Utilisateur`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26512 ;
-
---
--- Dumping data for table `transition`
---
-
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+transition=[
 (1, 'tdelille', 'Connexion', 'login=tdelille', '2009-02-12', '11:33:55', NULL, 0, NULL),
 (2, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=7', '2009-02-12', '11:33:58', NULL, 0, NULL),
 (166, 'mmay', 'Répondre à un message', 'IDForum=7,IDMsg=1184,IDParent=1183', '2009-02-13', '03:40:13', '00:09:46', 0, NULL),
@@ -512,8 +415,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (504, 'mmay', 'Bouger la scrollbar en bas - afficher la fin du message', 'IDForum=7,IDMsg=1214,ScrollVertical', '2009-02-15', '18:24:11', NULL, 492, NULL),
 (505, 'mmay', 'Répondre à un message', 'IDForum=7,IDMsg=1215,IDParent=1214', '2009-02-15', '11:24:59', '00:00:51', 0, NULL),
 (506, 'mmay', 'Afficher une structure (cours/forum)', 'IDForum=9', '2009-02-15', '11:25:14', NULL, 0, NULL),
-(507, 'mmay', 'Afficher une structure (cours/forum)', 'IDForum=10', '2009-02-15', '11:25:28', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(507, 'mmay', 'Afficher une structure (cours/forum)', 'IDForum=10', '2009-02-15', '11:25:28', NULL, 0, NULL),
 (508, 'mmay', 'Afficher une structure (cours/forum)', 'IDForum=11', '2009-02-15', '11:25:33', NULL, 0, NULL),
 (509, 'mwollenburger', 'Connexion', 'login=mwollenburger', '2009-02-15', '13:15:00', NULL, 0, NULL),
 (510, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=7', '2009-02-15', '13:15:03', NULL, 0, NULL),
@@ -910,8 +812,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (959, 'tdelille', 'Connexion', 'login=tdelille', '2009-02-16', '14:41:52', NULL, 0, NULL),
 (960, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=7', '2009-02-16', '14:41:53', NULL, 0, NULL),
 (961, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=1246', '2009-02-16', '14:42:07', '00:00:10', 0, 'Scrollbar inactive'),
-(962, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=1245', '2009-02-16', '14:42:20', '00:00:11', 0, 'Scrollbar inactive');
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(962, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=1245', '2009-02-16', '14:42:20', '00:00:11', 0, 'Scrollbar inactive'),
 (963, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=1244', '2009-02-16', '14:42:33', NULL, 0, NULL),
 (964, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=1248', '2009-02-16', '14:43:37', NULL, 0, NULL),
 (965, 'mmay', 'Répondre à un message', 'IDForum=7,IDMsg=,IDParent=1248', '2009-02-16', '14:49:14', '00:16:15', 0, NULL),
@@ -1324,8 +1225,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (1374, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=329,IDMsg=1275', '2009-02-17', '11:28:57', NULL, 0, NULL),
 (1375, 'gachort', 'Répondre à un message', 'IDForum=10,IDMsg=1277,IDParent=1269', '2009-02-17', '11:29:25', '00:01:49', 0, NULL),
 (1376, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=11', '2009-02-17', '11:29:45', NULL, 0, NULL),
-(1377, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=329', '2009-02-17', '11:30:11', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(1377, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=329', '2009-02-17', '11:30:11', NULL, 0, NULL),
 (1378, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=331', '2009-02-17', '11:30:24', NULL, 0, NULL),
 (1379, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=332', '2009-02-17', '11:30:31', NULL, 0, NULL),
 (1380, 'gachort', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=1272', '2009-02-17', '11:30:37', NULL, 0, NULL),
@@ -1717,8 +1617,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (1794, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=332', '2009-02-17', '16:29:11', NULL, 0, NULL),
 (1795, 'gachort', 'Répondre à un message', 'IDForum=332,IDMsg=1320,IDParent=1318', '2009-02-17', '16:29:18', '00:00:27', 0, NULL),
 (1796, 'gachort', 'Citer un message', 'IDForum=332,IDMsg=1318', '2009-02-17', '16:29:18', NULL, 1795, NULL),
-(1797, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=1318', '2009-02-17', '16:29:19', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(1797, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=1318', '2009-02-17', '16:29:19', NULL, 0, NULL),
 (1798, 'mmay', 'Afficher le fil de discussion', 'IDForum=10,IDMsg=1186', '2009-02-17', '16:29:24', NULL, 0, NULL),
 (1799, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=1319', '2009-02-17', '16:29:29', NULL, 0, NULL),
 (1800, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=333', '2009-02-17', '16:29:32', NULL, 0, NULL),
@@ -2123,8 +2022,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (2199, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=7', '2009-02-19', '12:53:28', NULL, 0, NULL),
 (2200, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=1345', '2009-02-19', '12:53:38', NULL, 0, NULL),
 (2201, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=7', '2009-02-19', '12:56:39', NULL, 0, NULL),
-(2202, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=1231', '2009-02-19', '12:56:50', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(2202, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=1231', '2009-02-19', '12:56:50', NULL, 0, NULL),
 (2203, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=1239', '2009-02-19', '12:57:07', NULL, 0, NULL),
 (2204, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=1242', '2009-02-19', '12:58:04', NULL, 0, NULL),
 (2205, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=1243', '2009-02-19', '12:58:09', NULL, 0, NULL),
@@ -2533,8 +2431,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (2608, 'tdelille', 'Connexion', 'login=tdelille', '2009-02-22', '01:39:54', NULL, 0, NULL),
 (2609, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=331', '2009-02-22', '01:39:55', NULL, 0, NULL),
 (2610, 'tdelille', 'Poster un nouveau message', 'IDForum=331,IDMsg=1371', '2009-02-22', '01:40:44', '00:00:42', 0, NULL),
-(2611, 'ddaniaupotter', 'Connexion', 'login=ddaniaupotter', '2009-02-22', '01:45:50', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(2611, 'ddaniaupotter', 'Connexion', 'login=ddaniaupotter', '2009-02-22', '01:45:50', NULL, 0, NULL),
 (2612, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=331', '2009-02-22', '01:45:50', NULL, 0, NULL),
 (2613, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=331,IDMsg=1365', '2009-02-22', '01:46:00', NULL, 0, NULL),
 (2614, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=331,IDMsg=1371', '2009-02-22', '01:46:18', '00:00:05', 0, 'Scrollbar inactive'),
@@ -2923,8 +2820,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (2997, 'mmay', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=1210', '2009-02-23', '09:25:32', '00:00:05', 0, 'Scrollbar inactive'),
 (2998, 'mmay', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=1215', '2009-02-23', '09:25:39', '00:00:09', 0, 'Scrollbar inactive'),
 (2999, 'mmay', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=1244', '2009-02-23', '09:25:50', '00:00:00', 0, 'Scrollbar inactive'),
-(3000, 'mmay', 'Afficher le fil de discussion', 'IDForum=7,IDMsg=1244', '2009-02-23', '09:25:53', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(3000, 'mmay', 'Afficher le fil de discussion', 'IDForum=7,IDMsg=1244', '2009-02-23', '09:25:53', NULL, 0, NULL),
 (3001, 'fdarriet', 'Connexion', 'login=fdarriet', '2009-02-23', '10:00:13', NULL, 0, NULL),
 (3002, 'fdarriet', 'Afficher une structure (cours/forum)', 'IDForum=9', '2009-02-23', '10:00:14', NULL, 0, NULL),
 (3003, 'fdarriet', 'Afficher le contenu d''un message', 'IDForum=9,IDMsg=1393', '2009-02-23', '10:00:24', '00:03:07', 0, 'Scrollbar inactive'),
@@ -3318,8 +3214,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (3391, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=1420', '2009-02-23', '16:29:52', '00:00:05', 0, 'Scrollbar inactive'),
 (3392, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=1418', '2009-02-23', '16:29:58', NULL, 0, NULL),
 (3393, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=1422', '2009-02-23', '16:30:16', NULL, 0, NULL),
-(3394, 'mmay', 'Connexion', 'login=mmay', '2009-02-23', '16:30:26', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(3394, 'mmay', 'Connexion', 'login=mmay', '2009-02-23', '16:30:26', NULL, 0, NULL),
 (3395, 'mmay', 'Afficher une structure (cours/forum)', 'IDForum=10', '2009-02-23', '16:30:27', NULL, 0, NULL),
 (3396, 'mmay', 'Afficher le contenu d''un message', 'IDForum=10,IDMsg=1425', '2009-02-23', '16:30:35', NULL, 0, NULL),
 (3397, 'gachort', 'Bouger la scrollbar en bas', 'IDForum=10,IDMsg=1415,ScrollVertical', '2009-02-23', '23:30:34', NULL, 3388, NULL),
@@ -3715,8 +3610,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (3821, 'tsoubrie', 'Bouger la scrollbar en bas', 'IDForum=355,IDMsg=1447,ScrollVertical', '2009-02-24', '21:51:08', NULL, 3815, NULL),
 (3822, 'tsoubrie', 'Bouger la scrollbar en bas', 'IDForum=355,IDMsg=1447,ScrollVertical', '2009-02-24', '21:51:09', NULL, 3815, NULL),
 (3823, 'tsoubrie', 'Bouger la scrollbar en bas - afficher la fin du message', 'IDForum=355,IDMsg=1447,ScrollVertical', '2009-02-24', '21:51:05', NULL, 3815, NULL),
-(3824, 'tsoubrie', 'Bouger la scrollbar en bas', 'IDForum=355,IDMsg=1447,ScrollVertical', '2009-02-24', '21:51:05', NULL, 3815, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(3824, 'tsoubrie', 'Bouger la scrollbar en bas', 'IDForum=355,IDMsg=1447,ScrollVertical', '2009-02-24', '21:51:05', NULL, 3815, NULL),
 (3825, 'tsoubrie', 'Bouger la scrollbar en bas', 'IDForum=355,IDMsg=1447,ScrollVertical', '2009-02-24', '21:51:08', NULL, 3815, NULL),
 (3826, 'tsoubrie', 'Bouger la scrollbar en bas', 'IDForum=355,IDMsg=1447,ScrollVertical', '2009-02-24', '21:51:09', NULL, 3815, NULL),
 (3827, 'tsoubrie', 'Bouger la scrollbar en bas - afficher la fin du message', 'IDForum=355,IDMsg=1447,ScrollVertical', '2009-02-24', '21:51:05', NULL, 3815, NULL),
@@ -4118,8 +4012,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (4223, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=332', '2009-02-25', '13:37:59', NULL, 0, NULL),
 (4224, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=1469', '2009-02-25', '13:38:14', NULL, 0, NULL),
 (4225, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=332', '2009-02-25', '13:41:21', NULL, 0, NULL),
-(4226, 'gachort', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=1456', '2009-02-25', '13:41:26', '00:00:02', 0, 'Scrollbar inactive');
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(4226, 'gachort', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=1456', '2009-02-25', '13:41:26', '00:00:02', 0, 'Scrollbar inactive'),
 (4227, 'gachort', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=1469', '2009-02-25', '13:41:31', '00:00:21', 0, 'Scrollbar inactive'),
 (4228, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=333', '2009-02-25', '13:42:15', NULL, 0, NULL),
 (4229, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=353', '2009-02-25', '13:42:21', NULL, 0, NULL),
@@ -4517,8 +4410,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (4621, 'mmay', 'Afficher le contenu d''un message', 'IDForum=335,IDMsg=1494', '2009-02-26', '08:52:04', NULL, 0, NULL),
 (4622, 'mmay', 'Afficher une structure (cours/forum)', 'IDForum=10', '2009-02-26', '08:55:18', NULL, 0, NULL),
 (4623, 'mmay', 'Afficher une structure (cours/forum)', 'IDForum=11', '2009-02-26', '08:55:27', NULL, 0, NULL),
-(4624, 'cevanen', 'Poster un nouveau message', 'IDForum=335,IDMsg=1495', '2009-02-26', '08:55:48', '00:13:54', 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(4624, 'cevanen', 'Poster un nouveau message', 'IDForum=335,IDMsg=1495', '2009-02-26', '08:55:48', '00:13:54', 0, NULL),
 (4625, 'cevanen', 'Afficher une structure (cours/forum)', 'IDForum=335', '2009-02-26', '08:58:21', NULL, 0, NULL),
 (4626, 'mmay', 'Afficher une structure (cours/forum)', 'IDForum=335', '2009-02-26', '08:59:48', NULL, 0, NULL),
 (4627, 'mmay', 'Afficher le contenu d''un message', 'IDForum=335,IDMsg=1495', '2009-02-26', '08:59:55', NULL, 0, NULL),
@@ -4921,8 +4813,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (5024, 'gachort', 'Afficher le contenu d''un message', 'IDForum=336,IDMsg=1516', '2009-02-27', '09:58:28', '00:00:07', 0, 'Scrollbar inactive'),
 (5025, 'tdelille', 'Répondre à un message', 'IDForum=332,IDMsg=1517,IDParent=1510', '2009-02-27', '10:00:11', '00:09:54', 0, NULL),
 (5026, 'tdelille', 'Citer un message', 'IDForum=332,IDMsg=1510', '2009-02-27', '10:00:11', NULL, 5025, NULL),
-(5027, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=10', '2009-02-27', '10:01:04', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(5027, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=10', '2009-02-27', '10:01:04', NULL, 0, NULL),
 (5028, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=9', '2009-02-27', '10:01:17', NULL, 0, NULL),
 (5029, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=335', '2009-02-27', '10:01:31', NULL, 0, NULL),
 (5030, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=335,IDMsg=1499', '2009-02-27', '10:01:47', '00:00:07', 0, 'Scrollbar inactive'),
@@ -5325,8 +5216,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (5427, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=353', '2009-03-01', '10:09:46', NULL, 0, NULL),
 (5428, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=353,IDMsg=1534', '2009-03-01', '10:09:49', '00:00:08', 0, 'Scrollbar inactive'),
 (5429, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=353,IDMsg=1535', '2009-03-01', '10:10:01', '00:00:02', 0, 'Scrollbar inactive'),
-(5430, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=353,IDMsg=1536', '2009-03-01', '10:10:06', '00:00:06', 0, 'Scrollbar inactive');
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(5430, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=353,IDMsg=1536', '2009-03-01', '10:10:06', '00:00:06', 0, 'Scrollbar inactive'),
 (5431, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=353,IDMsg=1538', '2009-03-01', '10:10:14', '00:00:03', 0, 'Scrollbar inactive'),
 (5432, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=353,IDMsg=1536', '2009-03-01', '10:10:18', '00:00:02', 0, 'Scrollbar inactive'),
 (5433, 'tdelille', 'Répondre à un message', 'IDForum=353,IDMsg=1542,IDParent=1536', '2009-03-01', '10:11:13', '00:00:52', 0, NULL),
@@ -5723,8 +5613,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (5851, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=9,IDMsg=1532', '2009-03-02', '05:21:51', '00:00:09', 0, 'Scrollbar inactive'),
 (5852, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=9,IDMsg=1465', '2009-03-02', '05:22:05', '00:00:11', 0, 'Scrollbar inactive'),
 (5853, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=9,IDMsg=1532', '2009-03-02', '05:22:20', NULL, 0, NULL),
-(5854, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=9,IDMsg=1541', '2009-03-02', '05:22:40', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(5854, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=9,IDMsg=1541', '2009-03-02', '05:22:40', NULL, 0, NULL),
 (5855, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=9,IDMsg=1550', '2009-03-02', '05:23:38', NULL, 0, NULL),
 (5856, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=9,IDMsg=1555', '2009-03-02', '05:23:59', NULL, 0, NULL),
 (5857, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=9,IDMsg=1556', '2009-03-02', '05:24:45', NULL, 0, NULL),
@@ -6137,8 +6026,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (6264, 'tsoubrie', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=1562', '2009-03-02', '16:28:08', '00:05:46', 0, NULL),
 (6265, 'tsoubrie', 'Bouger la scrollbar en bas', 'IDForum=355,IDMsg=1562,ScrollVertical', '2009-03-02', '23:28:13', NULL, 6264, NULL),
 (6266, 'tsoubrie', 'Bouger la scrollbar en bas', 'IDForum=355,IDMsg=1562,ScrollVertical', '2009-03-02', '23:31:32', NULL, 6264, NULL),
-(6267, 'tsoubrie', 'Bouger la scrollbar en bas', 'IDForum=355,IDMsg=1562,ScrollVertical', '2009-03-02', '23:32:27', NULL, 6264, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(6267, 'tsoubrie', 'Bouger la scrollbar en bas', 'IDForum=355,IDMsg=1562,ScrollVertical', '2009-03-02', '23:32:27', NULL, 6264, NULL),
 (6268, 'tsoubrie', 'Bouger la scrollbar en bas - afficher la fin du message', 'IDForum=355,IDMsg=1562,ScrollVertical', '2009-03-02', '23:33:54', NULL, 6264, NULL),
 (6269, 'tsoubrie', 'Répondre à un message', 'IDForum=355,IDMsg=1583,IDParent=1562', '2009-03-02', '16:58:30', '00:24:31', 0, NULL),
 (6270, 'tsoubrie', 'Upload un ficher avec le message', 'IDForum=355,IDMsg=1583,IDFile=7', '2009-03-02', '16:58:30', NULL, 6269, NULL),
@@ -6532,8 +6420,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (6658, 'adebeuckelaere', 'Afficher une structure (cours/forum)', 'IDForum=13', '2009-03-03', '12:22:20', NULL, 0, NULL),
 (6659, 'adebeuckelaere', 'Afficher le contenu d''un message', 'IDForum=13,IDMsg=1596', '2009-03-03', '12:22:25', '00:00:04', 0, 'Scrollbar inactive'),
 (6660, 'adebeuckelaere', 'Afficher le contenu d''un message', 'IDForum=13,IDMsg=1600', '2009-03-03', '12:22:32', NULL, 0, NULL),
-(6661, 'mdanet', 'Connexion', 'login=mdanet', '2009-03-03', '12:23:26', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(6661, 'mdanet', 'Connexion', 'login=mdanet', '2009-03-03', '12:23:26', NULL, 0, NULL),
 (6662, 'mdanet', 'Afficher une structure (cours/forum)', 'IDForum=9', '2009-03-03', '12:23:26', NULL, 0, NULL),
 (6663, 'mdanet', 'Afficher le contenu d''un message', 'IDForum=9,IDMsg=1592', '2009-03-03', '12:23:30', NULL, 0, NULL),
 (6664, 'adebeuckelaere', 'Afficher une structure (cours/forum)', 'IDForum=358', '2009-03-03', '12:23:44', NULL, 0, NULL),
@@ -6942,8 +6829,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (7067, 'shernu', 'Afficher le contenu d''un message', 'IDForum=335,IDMsg=1581', '2009-03-05', '12:18:15', '00:00:06', 0, 'Scrollbar inactive'),
 (7068, 'shernu', 'Afficher le contenu d''un message', 'IDForum=335,IDMsg=1582', '2009-03-05', '12:18:23', '00:00:04', 0, 'Scrollbar inactive'),
 (7069, 'shernu', 'Afficher le contenu d''un message', 'IDForum=335,IDMsg=1599', '2009-03-05', '12:18:29', NULL, 0, NULL),
-(7070, 'shernu', 'Afficher une structure (cours/forum)', 'IDForum=358', '2009-03-05', '12:18:39', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(7070, 'shernu', 'Afficher une structure (cours/forum)', 'IDForum=358', '2009-03-05', '12:18:39', NULL, 0, NULL),
 (7071, 'shernu', 'Afficher une structure (cours/forum)', 'IDForum=359', '2009-03-05', '12:18:48', NULL, 0, NULL),
 (7072, 'shernu', 'Afficher le contenu d''un message', 'IDForum=359,IDMsg=1598', '2009-03-05', '12:18:52', '00:00:02', 0, 'Scrollbar inactive'),
 (7073, 'shernu', 'Poster un nouveau message', 'IDForum=359,IDMsg=1627', '2009-03-05', '12:21:17', '00:02:20', 0, NULL),
@@ -7342,8 +7228,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (7466, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=329,IDMsg=1646', '2009-03-07', '02:14:20', NULL, 0, NULL),
 (7467, 'ddaniaupotter', 'Poster un nouveau message', 'IDForum=332,IDMsg=1648', '2009-03-07', '02:17:55', '00:10:21', 0, NULL),
 (7468, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=1647', '2009-03-07', '02:18:02', NULL, 0, NULL),
-(7469, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=329', '2009-03-07', '02:18:20', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(7469, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=329', '2009-03-07', '02:18:20', NULL, 0, NULL),
 (7470, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=332', '2009-03-07', '02:18:50', NULL, 0, NULL),
 (7471, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=1648', '2009-03-07', '02:18:55', '00:00:58', 0, 'Scrollbar inactive'),
 (7472, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=329,IDMsg=1634', '2009-03-07', '02:18:56', NULL, 0, NULL),
@@ -7735,8 +7620,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (7858, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=10', '2009-03-08', '11:28:21', NULL, 0, NULL),
 (7859, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=10,IDMsg=1674', '2009-03-08', '11:28:27', '00:00:04', 0, 'Scrollbar inactive'),
 (7860, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=10,IDMsg=1677', '2009-03-08', '11:28:34', NULL, 0, NULL),
-(7861, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=10,IDMsg=1675', '2009-03-08', '11:28:57', '00:00:02', 0, 'Scrollbar inactive');
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(7861, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=10,IDMsg=1675', '2009-03-08', '11:28:57', '00:00:02', 0, 'Scrollbar inactive'),
 (7862, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=10,IDMsg=1678', '2009-03-08', '11:29:02', NULL, 0, NULL),
 (7863, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=336', '2009-03-08', '11:29:39', NULL, 0, NULL),
 (7864, 'gachort', 'Connexion', 'login=gachort', '2009-03-08', '12:57:41', NULL, 0, NULL),
@@ -8142,8 +8026,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (8264, 'mwollenburger', 'Connexion', 'login=mwollenburger', '2009-03-09', '16:26:34', NULL, 0, NULL),
 (8265, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=329', '2009-03-09', '16:26:36', NULL, 0, NULL),
 (8266, 'mwollenburger', 'Afficher le fil de discussion', 'IDForum=329,IDMsg=1697', '2009-03-09', '16:26:46', '00:07:11', 0, NULL),
-(8267, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=329,IDMsg=1704,ScrollVertical', '2009-03-09', '22:26:47', NULL, 8266, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(8267, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=329,IDMsg=1704,ScrollVertical', '2009-03-09', '22:26:47', NULL, 8266, NULL),
 (8268, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=329,IDMsg=1704,ScrollVertical', '2009-03-09', '22:26:47', NULL, 8266, NULL),
 (8269, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=329,IDMsg=1704,ScrollVertical', '2009-03-09', '22:26:49', NULL, 8266, NULL),
 (8270, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=329,IDMsg=1704,ScrollVertical', '2009-03-09', '22:26:54', NULL, 8266, NULL),
@@ -8543,8 +8426,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (8664, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=1738', '2009-03-10', '15:59:01', NULL, 0, NULL),
 (8665, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=1736', '2009-03-10', '15:59:12', '00:00:06', 0, 'Scrollbar inactive'),
 (8666, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=1738', '2009-03-10', '15:59:20', '00:00:10', 0, 'Scrollbar inactive'),
-(8667, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=343', '2009-03-10', '15:59:25', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(8667, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=343', '2009-03-10', '15:59:25', NULL, 0, NULL),
 (8668, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=1738', '2009-03-10', '15:59:31', '00:00:02', 0, 'Scrollbar inactive'),
 (8669, 'ddaniaupotter', 'Répondre à un message', 'IDForum=329,IDMsg=1739,IDParent=1737', '2009-03-10', '15:59:51', '00:00:11', 0, NULL),
 (8670, 'tdelille', 'Répondre à un message', 'IDForum=343,IDMsg=1740,IDParent=1738', '2009-03-10', '15:59:52', '00:00:20', 0, NULL),
@@ -8941,8 +8823,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (9061, 'gachort', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=1748', '2009-03-12', '16:28:08', '00:00:03', 0, 'Scrollbar inactive'),
 (9062, 'gachort', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=1750', '2009-03-12', '16:28:14', '00:00:03', 0, 'Scrollbar inactive'),
 (9063, 'gachort', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=1752', '2009-03-12', '16:28:19', '00:00:07', 0, 'Scrollbar inactive'),
-(9064, 'gachort', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=1750', '2009-03-12', '16:28:29', '00:00:06', 0, 'Scrollbar inactive');
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(9064, 'gachort', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=1750', '2009-03-12', '16:28:29', '00:00:06', 0, 'Scrollbar inactive'),
 (9065, 'gachort', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=1754', '2009-03-12', '16:28:37', '00:00:03', 0, 'Scrollbar inactive'),
 (9066, 'gachort', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=1753', '2009-03-12', '16:28:43', '00:00:11', 0, 'Scrollbar inactive'),
 (9067, 'gachort', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=1751', '2009-03-12', '16:28:57', '00:00:06', 0, 'Scrollbar inactive'),
@@ -9347,8 +9228,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (9492, 'gachort', 'Afficher le contenu d''un message', 'IDForum=329,IDMsg=1808', '2009-03-14', '03:49:15', '00:03:23', 0, 'Scrollbar inactive'),
 (9493, 'gachort', 'Afficher le contenu d''un message', 'IDForum=329,IDMsg=1809', '2009-03-14', '03:51:28', '00:00:09', 0, 'Scrollbar inactive'),
 (9494, 'gachort', 'Afficher le contenu d''un message', 'IDForum=329,IDMsg=1807', '2009-03-14', '03:51:41', NULL, 0, NULL),
-(9495, 'mwollenburger', 'Répondre à un message', 'IDForum=329,IDMsg=1810,IDParent=1808', '2009-03-14', '03:54:18', '00:02:50', 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(9495, 'mwollenburger', 'Répondre à un message', 'IDForum=329,IDMsg=1810,IDParent=1808', '2009-03-14', '03:54:18', '00:02:50', 0, NULL),
 (9496, 'mwollenburger', 'Citer un message', 'IDForum=329,IDMsg=1808', '2009-03-14', '03:54:18', NULL, 9495, NULL),
 (9497, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=329,IDMsg=1809', '2009-03-14', '03:54:43', NULL, 0, NULL),
 (9498, 'tdelille', 'Connexion', 'login=tdelille', '2009-03-14', '03:54:56', NULL, 0, NULL),
@@ -9747,8 +9627,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (9891, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=343,IDMsg=1839,ScrollVertical', '2009-03-16', '08:46:44', NULL, 9880, NULL),
 (9892, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=343,IDMsg=1839,ScrollVertical', '2009-03-16', '08:46:44', NULL, 9880, NULL),
 (9893, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=343,IDMsg=1839,ScrollVertical', '2009-03-16', '08:46:45', NULL, 9880, NULL),
-(9894, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=343,IDMsg=1839,ScrollVertical', '2009-03-16', '08:46:45', NULL, 9880, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(9894, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=343,IDMsg=1839,ScrollVertical', '2009-03-16', '08:46:45', NULL, 9880, NULL),
 (9895, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=343,IDMsg=1839,ScrollVertical', '2009-03-16', '08:46:56', NULL, 9880, NULL),
 (9896, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=343,IDMsg=1839,ScrollVertical', '2009-03-16', '08:48:03', NULL, 9880, NULL),
 (9897, 'mwollenburger', 'Bouger la scrollbar en bas - afficher la fin du message', 'IDForum=343,IDMsg=1839,ScrollVertical', '2009-03-16', '08:48:17', NULL, 9880, NULL),
@@ -10149,8 +10028,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (10292, 'mwollenburger', 'Poster un nouveau message', 'IDForum=353,IDMsg=1872', '2009-03-17', '04:03:55', '00:01:38', 0, NULL),
 (10293, 'tsoubrie', 'Afficher le contenu d''un message', 'IDForum=346,IDMsg=1871', '2009-03-17', '04:03:56', NULL, 0, NULL),
 (10294, 'tsoubrie', 'Afficher le contenu d''un message', 'IDForum=346,IDMsg=1865', '2009-03-17', '04:04:55', NULL, 0, NULL),
-(10295, 'tsoubrie', 'Download un fichier dans le message', 'IDForum=346,IDMsg=1865,IDFile=14', '2009-03-17', '04:04:57', NULL, 10294, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(10295, 'tsoubrie', 'Download un fichier dans le message', 'IDForum=346,IDMsg=1865,IDFile=14', '2009-03-17', '04:04:57', NULL, 10294, NULL),
 (10296, 'tsoubrie', 'Afficher le contenu d''un message', 'IDForum=346,IDMsg=1869', '2009-03-17', '04:08:36', '00:00:34', 0, 'Scrollbar inactive'),
 (10297, 'tsoubrie', 'Répondre à un message', 'IDForum=346,IDMsg=1873,IDParent=1869', '2009-03-17', '04:18:46', '00:09:34', 0, NULL),
 (10298, 'tdelille', 'Connexion', 'login=tdelille', '2009-03-17', '04:35:41', NULL, 0, NULL),
@@ -10543,8 +10421,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (10685, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=1728', '2009-03-17', '16:09:16', NULL, 0, NULL),
 (10686, 'psalam', 'Download un fichier dans le message', 'IDForum=358,IDMsg=1894,IDFile=15', '2009-03-17', '16:12:25', NULL, 10675, NULL),
 (10687, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=329', '2009-03-17', '16:17:26', NULL, 0, NULL),
-(10688, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=329,IDMsg=1893', '2009-03-17', '16:17:37', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(10688, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=329,IDMsg=1893', '2009-03-17', '16:17:37', NULL, 0, NULL),
 (10689, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=353', '2009-03-17', '16:31:46', NULL, 0, NULL),
 (10690, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=353,IDMsg=1872', '2009-03-17', '16:31:55', NULL, 0, NULL),
 (10691, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=353,IDMsg=1484', '2009-03-17', '16:36:06', NULL, 0, NULL),
@@ -10924,8 +10801,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (11065, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=346', '2009-03-18', '05:03:36', NULL, 0, NULL),
 (11066, 'gachort', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=1799', '2009-03-18', '05:10:29', '00:00:22', 0, 'Scrollbar inactive'),
 (11067, 'gachort', 'Poster un nouveau message', 'IDForum=354,IDMsg=1909', '2009-03-18', '05:16:19', '00:05:19', 0, NULL),
-(11068, 'mwollenburger', 'Poster un nouveau message', 'IDForum=346,IDMsg=1910', '2009-03-18', '05:18:16', '00:13:54', 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(11068, 'mwollenburger', 'Poster un nouveau message', 'IDForum=346,IDMsg=1910', '2009-03-18', '05:18:16', '00:13:54', 0, NULL),
 (11069, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=353', '2009-03-18', '05:20:26', NULL, 0, NULL),
 (11070, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=353,IDMsg=1908', '2009-03-18', '05:20:33', NULL, 0, NULL),
 (11071, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=354', '2009-03-18', '05:21:08', NULL, 0, NULL),
@@ -11315,8 +11191,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (11455, 'cdejean', 'Afficher une structure (cours/forum)', 'IDForum=341', '2009-03-18', '15:53:33', NULL, 0, NULL),
 (11456, 'cdejean', 'Afficher une structure (cours/forum)', 'IDForum=340', '2009-03-18', '15:53:38', NULL, 0, NULL),
 (11457, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=340,IDMsg=1833', '2009-03-18', '15:53:45', NULL, 0, NULL),
-(11458, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=340,IDMsg=1853', '2009-03-18', '15:54:06', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(11458, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=340,IDMsg=1853', '2009-03-18', '15:54:06', NULL, 0, NULL),
 (11459, 'gachort', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=1926', '2009-03-18', '15:55:05', '00:00:05', 0, 'Scrollbar inactive'),
 (11460, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=340,IDMsg=1856', '2009-03-18', '15:55:10', NULL, 0, NULL),
 (11461, 'gachort', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=1924', '2009-03-18', '15:55:13', '00:00:03', 0, 'Scrollbar inactive'),
@@ -11708,8 +11583,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (11847, 'cdejean', 'Afficher une structure (cours/forum)', 'IDForum=340', '2009-03-19', '09:37:58', NULL, 0, NULL),
 (11848, 'cdejean', 'Afficher une structure (cours/forum)', 'IDForum=339', '2009-03-19', '09:38:12', NULL, 0, NULL),
 (11849, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=1952', '2009-03-19', '09:38:25', '00:01:20', 0, 'Scrollbar inactive'),
-(11850, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=1930', '2009-03-19', '09:41:21', '00:00:03', 0, 'Scrollbar inactive');
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(11850, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=1930', '2009-03-19', '09:41:21', '00:00:03', 0, 'Scrollbar inactive'),
 (11851, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=1952', '2009-03-19', '09:41:26', '01:27:12', 0, 'Scrollbar inactive'),
 (11852, 'gachort', 'Connexion', 'login=gachort', '2009-03-19', '10:18:12', NULL, 0, NULL),
 (11853, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=354', '2009-03-19', '10:18:13', NULL, 0, NULL),
@@ -12110,8 +11984,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (12248, 'gachort', 'Répondre à un message', 'IDForum=354,IDMsg=2006,IDParent=1996', '2009-03-20', '00:40:57', '00:01:34', 0, NULL),
 (12249, 'gachort', 'Citer un message', 'IDForum=354,IDMsg=1996', '2009-03-20', '00:40:57', NULL, 12248, NULL),
 (12250, 'gachort', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=1909', '2009-03-20', '00:41:21', NULL, 0, NULL),
-(12251, 'tdelille', 'Connexion', 'login=tdelille', '2009-03-20', '00:45:11', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(12251, 'tdelille', 'Connexion', 'login=tdelille', '2009-03-20', '00:45:11', NULL, 0, NULL),
 (12252, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=354', '2009-03-20', '00:45:11', NULL, 0, NULL),
 (12253, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=2006', '2009-03-20', '00:45:16', NULL, 0, NULL),
 (12254, 'jvasseur', 'Afficher une structure (cours/forum)', 'IDForum=339', '2009-03-20', '01:24:45', NULL, 0, NULL),
@@ -12502,8 +12375,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (12639, 'jvasseur', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2029', '2009-03-21', '01:01:42', NULL, 0, NULL),
 (12640, 'jvasseur', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2032', '2009-03-21', '01:02:08', '00:14:31', 0, NULL),
 (12641, 'gachort', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=2012', '2009-03-21', '01:05:05', NULL, 0, NULL),
-(12642, 'gachort', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=2013', '2009-03-21', '01:05:32', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(12642, 'gachort', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=2013', '2009-03-21', '01:05:32', NULL, 0, NULL),
 (12643, 'gachort', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=2021', '2009-03-21', '01:05:51', '00:00:08', 0, 'Scrollbar inactive'),
 (12644, 'gachort', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=2024', '2009-03-21', '01:06:02', '00:00:05', 0, 'Scrollbar inactive'),
 (12645, 'gachort', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=2027', '2009-03-21', '01:06:10', '00:00:34', 0, 'Scrollbar inactive'),
@@ -12898,8 +12770,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (13034, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=329,IDMsg=2064', '2009-03-21', '16:59:27', NULL, 0, NULL),
 (13035, 'tdelille', 'Répondre à un message', 'IDForum=329,IDMsg=2065,IDParent=2064', '2009-03-21', '17:00:09', '00:02:04', 0, NULL),
 (13036, 'tdelille', 'Citer un message', 'IDForum=329,IDMsg=2064', '2009-03-21', '17:00:09', NULL, 13035, NULL),
-(13037, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=329,IDMsg=2033', '2009-03-21', '17:00:43', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(13037, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=329,IDMsg=2033', '2009-03-21', '17:00:43', NULL, 0, NULL),
 (13038, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=329,IDMsg=2037', '2009-03-21', '17:00:54', NULL, 0, NULL),
 (13039, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=343', '2009-03-21', '17:00:54', NULL, 0, NULL),
 (13040, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=343,IDMsg=2061', '2009-03-21', '17:00:59', NULL, 0, NULL),
@@ -13293,8 +13164,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (13428, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=329', '2009-03-22', '04:52:04', NULL, 0, NULL),
 (13429, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=14', '2009-03-22', '04:52:15', NULL, 0, NULL),
 (13430, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=14,IDMsg=2101', '2009-03-22', '04:52:19', '00:00:09', 0, 'Scrollbar inactive'),
-(13431, 'mwollenburger', 'Répondre à un message', 'IDForum=14,IDMsg=2104,IDParent=2101', '2009-03-22', '04:57:09', '00:04:36', 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(13431, 'mwollenburger', 'Répondre à un message', 'IDForum=14,IDMsg=2104,IDParent=2101', '2009-03-22', '04:57:09', '00:04:36', 0, NULL),
 (13432, 'mwollenburger', 'Citer un message', 'IDForum=14,IDMsg=2101', '2009-03-22', '04:57:09', NULL, 13431, NULL),
 (13433, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=14,IDMsg=2101', '2009-03-22', '05:00:41', NULL, 0, NULL),
 (13434, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=14,IDMsg=2099', '2009-03-22', '05:23:00', NULL, 0, NULL),
@@ -13677,8 +13547,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (13811, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=14,IDMsg=2119,ScrollVertical', '2009-03-22', '17:41:48', NULL, 13791, NULL),
 (13812, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=14,IDMsg=2119,ScrollVertical', '2009-03-22', '17:41:48', NULL, 13791, NULL),
 (13813, 'mwollenburger', 'Bouger la scrollbar en bas', 'IDForum=14,IDMsg=2119,ScrollVertical', '2009-03-22', '17:41:50', NULL, 13791, NULL),
-(13814, 'mwollenburger', 'Bouger la scrollbar en bas - afficher la fin du message', 'IDForum=14,IDMsg=2119,ScrollVertical', '2009-03-22', '17:43:18', NULL, 13791, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(13814, 'mwollenburger', 'Bouger la scrollbar en bas - afficher la fin du message', 'IDForum=14,IDMsg=2119,ScrollVertical', '2009-03-22', '17:43:18', NULL, 13791, NULL),
 (13815, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=329', '2009-03-22', '11:44:17', NULL, 0, NULL),
 (13816, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=343', '2009-03-22', '11:45:50', NULL, 0, NULL),
 (13817, 'mwollenburger', 'Répondre à un message', 'IDForum=14,IDMsg=2120,IDParent=2119', '2009-03-22', '11:56:43', '00:13:19', 0, NULL),
@@ -14062,8 +13931,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (14195, 'jvasseur', 'Afficher une structure (cours/forum)', 'IDForum=339', '2009-03-22', '16:10:36', NULL, 0, NULL),
 (14196, 'jvasseur', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2149', '2009-03-22', '16:10:42', NULL, 0, NULL),
 (14197, 'ddaniaupotter', 'Poster un nouveau message', 'IDForum=14,IDMsg=2150', '2009-03-22', '16:17:39', '00:11:46', 0, NULL),
-(14198, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=14', '2009-03-22', '16:18:09', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(14198, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=14', '2009-03-22', '16:18:09', NULL, 0, NULL),
 (14199, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=14,IDMsg=2147', '2009-03-22', '16:18:14', '00:00:08', 0, 'Scrollbar inactive'),
 (14200, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=14,IDMsg=2148', '2009-03-22', '16:18:24', NULL, 0, NULL),
 (14201, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=14,IDMsg=2150', '2009-03-22', '16:18:43', NULL, 0, NULL),
@@ -14448,8 +14316,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (14580, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=344', '2009-03-23', '07:37:56', NULL, 0, NULL),
 (14581, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=346', '2009-03-23', '07:38:03', NULL, 0, NULL),
 (14582, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=333', '2009-03-23', '07:38:12', NULL, 0, NULL),
-(14583, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=353', '2009-03-23', '07:38:17', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(14583, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=353', '2009-03-23', '07:38:17', NULL, 0, NULL),
 (14584, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=354', '2009-03-23', '07:38:26', NULL, 0, NULL),
 (14585, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=2178', '2009-03-23', '07:38:33', NULL, 0, NULL),
 (14586, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=347', '2009-03-23', '07:38:44', NULL, 0, NULL),
@@ -14844,8 +14711,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (14975, 'mmay', 'Connexion', 'login=mmay', '2009-03-24', '09:41:54', NULL, 0, NULL),
 (14976, 'mmay', 'Afficher une structure (cours/forum)', 'IDForum=7', '2009-03-24', '09:41:55', NULL, 0, NULL),
 (14977, 'shernu', 'Afficher une structure (cours/forum)', 'IDForum=336', '2009-03-24', '09:41:56', NULL, 0, NULL),
-(14978, 'mmay', 'Afficher une structure (cours/forum)', 'IDForum=331', '2009-03-24', '09:42:06', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(14978, 'mmay', 'Afficher une structure (cours/forum)', 'IDForum=331', '2009-03-24', '09:42:06', NULL, 0, NULL),
 (14979, 'shernu', 'Afficher le contenu d''un message', 'IDForum=336,IDMsg=1516', '2009-03-24', '09:42:08', '00:00:04', 0, 'Scrollbar inactive'),
 (14980, 'mmay', 'Afficher une structure (cours/forum)', 'IDForum=332', '2009-03-24', '09:42:13', NULL, 0, NULL),
 (14981, 'shernu', 'Afficher le contenu d''un message', 'IDForum=336,IDMsg=1518', '2009-03-24', '09:42:14', '00:00:12', 0, 'Scrollbar inactive'),
@@ -15239,8 +15105,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (15369, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=344,IDMsg=2230', '2009-03-24', '16:31:28', NULL, 0, NULL),
 (15370, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=344,IDMsg=2232', '2009-03-24', '16:32:12', NULL, 0, NULL),
 (15371, 'ddaniaupotter', 'Répondre à un message', 'IDForum=348,IDMsg=2236,IDParent=2233', '2009-03-24', '16:32:37', '01:02:45', 0, NULL),
-(15372, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=344', '2009-03-24', '16:32:46', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(15372, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=344', '2009-03-24', '16:32:46', NULL, 0, NULL),
 (15373, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=344,IDMsg=2232', '2009-03-24', '16:32:51', NULL, 0, NULL),
 (15374, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=344,IDMsg=2231', '2009-03-24', '16:32:55', NULL, 0, NULL),
 (15375, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=344,IDMsg=2231', '2009-03-24', '16:33:11', NULL, 0, NULL),
@@ -15622,8 +15487,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (15751, 'mgodwod', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2225', '2009-03-25', '06:09:19', NULL, 0, NULL),
 (15752, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=355', '2009-03-25', '06:18:33', NULL, 0, NULL),
 (15753, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2251', '2009-03-25', '06:18:48', '00:00:12', 0, 'Scrollbar inactive'),
-(15754, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=1611', '2009-03-25', '06:19:02', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(15754, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=1611', '2009-03-25', '06:19:02', NULL, 0, NULL),
 (15755, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=354', '2009-03-25', '06:19:36', NULL, 0, NULL),
 (15756, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=2178', '2009-03-25', '06:19:58', NULL, 0, NULL),
 (15757, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=346', '2009-03-25', '06:20:48', NULL, 0, NULL),
@@ -16018,8 +15882,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (16146, 'tsoubrie', 'Afficher le contenu d''un message', 'IDForum=344,IDMsg=2278', '2009-03-25', '16:10:14', NULL, 0, NULL),
 (16147, 'tsoubrie', 'Afficher une structure (cours/forum)', 'IDForum=346', '2009-03-25', '16:10:27', NULL, 0, NULL),
 (16148, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=355', '2009-03-25', '16:10:30', NULL, 0, NULL),
-(16149, 'tsoubrie', 'Afficher une structure (cours/forum)', 'IDForum=332', '2009-03-25', '16:10:34', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(16149, 'tsoubrie', 'Afficher une structure (cours/forum)', 'IDForum=332', '2009-03-25', '16:10:34', NULL, 0, NULL),
 (16150, 'gachort', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2283', '2009-03-25', '16:10:37', '00:00:12', 0, 'Scrollbar inactive'),
 (16151, 'gachort', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2287', '2009-03-25', '16:10:53', '00:00:30', 0, 'Scrollbar inactive'),
 (16152, 'gachort', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2288', '2009-03-25', '16:11:26', '00:00:18', 0, 'Scrollbar inactive'),
@@ -16412,8 +16275,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (16539, 'tdelille', 'Citer un message', 'IDForum=355,IDMsg=2287', '2009-03-26', '12:13:01', NULL, 16538, NULL),
 (16540, 'gachort', 'Connexion', 'login=gachort', '2009-03-26', '12:49:40', NULL, 0, NULL),
 (16541, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=355', '2009-03-26', '12:49:41', NULL, 0, NULL),
-(16542, 'gachort', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2316', '2009-03-26', '12:50:12', '00:00:16', 0, 'Scrollbar inactive');
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(16542, 'gachort', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2316', '2009-03-26', '12:50:12', '00:00:16', 0, 'Scrollbar inactive'),
 (16543, 'gachort', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2320', '2009-03-26', '12:50:34', NULL, 0, NULL),
 (16544, 'ddaniaupotter', 'Connexion', 'login=ddaniaupotter', '2009-03-26', '15:05:15', NULL, 0, NULL),
 (16545, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=329', '2009-03-26', '15:05:20', NULL, 0, NULL),
@@ -16807,8 +16669,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (16933, 'gachort', 'Citer un message', 'IDForum=329,IDMsg=2348', '2009-03-28', '01:01:58', NULL, 16932, NULL),
 (16934, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=332', '2009-03-28', '01:10:28', NULL, 0, NULL),
 (16935, 'gachort', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=2342', '2009-03-28', '01:10:35', '00:00:18', 0, NULL),
-(16936, 'gachort', 'Bouger la scrollbar en bas', 'IDForum=332,IDMsg=2342,ScrollVertical', '2009-03-28', '07:10:39', NULL, 16935, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(16936, 'gachort', 'Bouger la scrollbar en bas', 'IDForum=332,IDMsg=2342,ScrollVertical', '2009-03-28', '07:10:39', NULL, 16935, NULL),
 (16937, 'gachort', 'Bouger la scrollbar en bas', 'IDForum=332,IDMsg=2342,ScrollVertical', '2009-03-28', '07:10:43', NULL, 16935, NULL),
 (16938, 'gachort', 'Bouger la scrollbar en bas - afficher la fin du message', 'IDForum=332,IDMsg=2342,ScrollVertical', '2009-03-28', '07:10:55', NULL, 16935, NULL),
 (16939, 'gachort', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=2343', '2009-03-28', '01:10:58', '00:00:07', 0, NULL),
@@ -17200,8 +17061,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (17325, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2363', '2009-03-29', '16:16:27', NULL, 0, NULL),
 (17326, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=340', '2009-03-29', '16:16:54', NULL, 0, NULL),
 (17327, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=341', '2009-03-29', '16:17:03', NULL, 0, NULL),
-(17328, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=13', '2009-03-29', '16:17:19', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(17328, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=13', '2009-03-29', '16:17:19', NULL, 0, NULL),
 (17329, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=358', '2009-03-29', '16:17:23', NULL, 0, NULL),
 (17330, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=358,IDMsg=2226', '2009-03-29', '16:17:28', NULL, 0, NULL),
 (17331, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=359', '2009-03-29', '16:17:52', NULL, 0, NULL),
@@ -17595,8 +17455,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (17719, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=354', '2009-03-31', '04:26:29', NULL, 0, NULL),
 (17720, 'gachort', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=2411', '2009-03-31', '04:26:37', '00:00:00', 0, 'Scrollbar inactive'),
 (17721, 'gachort', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=2412', '2009-03-31', '04:26:42', '00:00:08', 0, 'Scrollbar inactive'),
-(17722, 'gachort', 'Poster un nouveau message', 'IDForum=354,IDMsg=2413', '2009-03-31', '04:29:16', '00:02:22', 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(17722, 'gachort', 'Poster un nouveau message', 'IDForum=354,IDMsg=2413', '2009-03-31', '04:29:16', '00:02:22', 0, NULL),
 (17723, 'gachort', 'Upload un ficher avec le message', 'IDForum=354,IDMsg=2413,IDFile=28', '2009-03-31', '04:29:16', NULL, 17722, NULL),
 (17724, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=354', '2009-03-31', '04:30:50', NULL, 0, NULL),
 (17725, 'gachort', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=2413', '2009-03-31', '04:30:57', '00:00:02', 0, 'Scrollbar inactive'),
@@ -17988,8 +17847,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (18111, 'gachort', 'Download un fichier dans le message', 'IDForum=354,IDMsg=2448,IDFile=35', '2009-04-01', '02:55:20', NULL, 18110, NULL),
 (18112, 'gachort', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=2449', '2009-04-01', '02:55:52', NULL, 0, NULL),
 (18113, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=354', '2009-04-01', '02:57:33', NULL, 0, NULL),
-(18114, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=354', '2009-04-01', '02:57:41', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(18114, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=354', '2009-04-01', '02:57:41', NULL, 0, NULL),
 (18115, 'gachort', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=2450', '2009-04-01', '02:58:00', NULL, 0, NULL),
 (18116, 'gachort', 'Connexion', 'login=gachort', '2009-04-01', '04:50:47', NULL, 0, NULL),
 (18117, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=332', '2009-04-01', '04:50:50', NULL, 0, NULL),
@@ -18369,8 +18227,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (18491, 'mwollenburger', 'Répondre à un message', 'IDForum=332,IDMsg=2484,IDParent=2483', '2009-04-01', '16:10:05', '00:01:01', 0, NULL),
 (18492, 'mwollenburger', 'Citer un message', 'IDForum=332,IDMsg=2483', '2009-04-01', '16:10:05', NULL, 18491, NULL),
 (18493, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=2479', '2009-04-01', '16:10:26', NULL, 0, NULL),
-(18494, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=2474', '2009-04-01', '16:13:56', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(18494, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=2474', '2009-04-01', '16:13:56', NULL, 0, NULL),
 (18495, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=14', '2009-04-01', '16:14:24', NULL, 0, NULL),
 (18496, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=343', '2009-04-01', '16:14:33', NULL, 0, NULL),
 (18497, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=344', '2009-04-01', '16:14:48', NULL, 0, NULL),
@@ -18759,8 +18616,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (18880, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=2502', '2009-04-02', '16:32:16', NULL, 0, NULL),
 (18881, 'mwollenburger', 'Afficher le fil de discussion', 'IDForum=332,IDMsg=2474', '2009-04-02', '16:32:36', NULL, 0, NULL),
 (18882, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=343', '2009-04-02', '16:33:13', NULL, 0, NULL),
-(18883, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=344', '2009-04-02', '16:33:21', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(18883, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=344', '2009-04-02', '16:33:21', NULL, 0, NULL),
 (18884, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=344,IDMsg=2505', '2009-04-02', '16:33:27', NULL, 0, NULL),
 (18885, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=346', '2009-04-02', '16:34:31', NULL, 0, NULL),
 (18886, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=332', '2009-04-02', '16:35:26', NULL, 0, NULL),
@@ -19146,8 +19002,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (19266, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=2532', '2009-04-04', '01:20:21', NULL, 0, NULL),
 (19267, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=2529', '2009-04-04', '01:20:29', NULL, 0, NULL),
 (19268, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=2527', '2009-04-04', '01:21:13', NULL, 0, NULL),
-(19269, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=2519', '2009-04-04', '01:21:27', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(19269, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=2519', '2009-04-04', '01:21:27', NULL, 0, NULL),
 (19270, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=332,IDMsg=2479', '2009-04-04', '01:37:02', NULL, 0, NULL),
 (19271, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=344', '2009-04-04', '02:14:58', NULL, 0, NULL),
 (19272, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=344,IDMsg=2516', '2009-04-04', '02:15:05', '00:00:04', 0, 'Scrollbar inactive'),
@@ -19531,8 +19386,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (19650, 'fdarriet', 'Répondre à un message', 'IDForum=339,IDMsg=2559,IDParent=2557', '2009-04-04', '14:35:16', '00:05:01', 0, NULL),
 (19651, 'fdarriet', 'Afficher une structure (cours/forum)', 'IDForum=337', '2009-04-04', '14:35:27', NULL, 0, NULL),
 (19652, 'fdarriet', 'Afficher le contenu d''un message', 'IDForum=337,IDMsg=2511', '2009-04-04', '14:35:30', '00:00:39', 0, 'Scrollbar inactive'),
-(19653, 'gachort', 'Poster un nouveau message', 'IDForum=344,IDMsg=2560', '2009-04-04', '14:38:22', '00:10:15', 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(19653, 'gachort', 'Poster un nouveau message', 'IDForum=344,IDMsg=2560', '2009-04-04', '14:38:22', '00:10:15', 0, NULL),
 (19654, 'mdanet', 'Afficher une structure (cours/forum)', 'IDForum=339', '2009-04-04', '14:43:18', NULL, 0, NULL),
 (19655, 'mdanet', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2559', '2009-04-04', '14:43:23', NULL, 0, NULL),
 (19656, 'mdanet', 'Afficher une structure (cours/forum)', 'IDForum=337', '2009-04-04', '14:43:57', NULL, 0, NULL),
@@ -19928,8 +19782,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (20046, 'jvasseur', 'Bouger la scrollbar en bas', 'IDForum=337,IDMsg=2561,ScrollVertical', '2009-04-06', '22:50:56', NULL, 20045, NULL),
 (20047, 'jvasseur', 'Bouger la scrollbar en bas - afficher la fin du message', 'IDForum=337,IDMsg=2561,ScrollVertical', '2009-04-06', '22:51:51', NULL, 20045, NULL),
 (20048, 'jvasseur', 'Répondre à un message', 'IDForum=337,IDMsg=2598,IDParent=2561', '2009-04-06', '14:54:28', '00:02:36', 0, NULL),
-(20049, 'jvasseur', 'Afficher une structure (cours/forum)', 'IDForum=339', '2009-04-06', '14:54:37', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(20049, 'jvasseur', 'Afficher une structure (cours/forum)', 'IDForum=339', '2009-04-06', '14:54:37', NULL, 0, NULL),
 (20050, 'jvasseur', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2557', '2009-04-06', '14:54:49', '00:04:18', 0, 'Scrollbar inactive'),
 (20051, 'jvasseur', 'Bouger la scrollbar en bas', 'IDForum=339,IDMsg=2557,ScrollVertical', '2009-04-06', '22:59:03', NULL, 20050, NULL),
 (20052, 'jvasseur', 'Bouger la scrollbar en bas - afficher la fin du message', 'IDForum=339,IDMsg=2557,ScrollVertical', '2009-04-06', '22:59:02', NULL, 20050, NULL),
@@ -20329,8 +20182,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (20446, 'fdarriet', 'Afficher une structure (cours/forum)', 'IDForum=339', '2009-04-07', '16:20:54', NULL, 0, NULL),
 (20447, 'fdarriet', 'Afficher une structure (cours/forum)', 'IDForum=337', '2009-04-07', '16:21:35', NULL, 0, NULL),
 (20448, 'fdarriet', 'Afficher le contenu d''un message', 'IDForum=337,IDMsg=2622', '2009-04-07', '16:21:40', NULL, 0, NULL),
-(20449, 'gachort', 'Connexion', 'login=gachort', '2009-04-07', '16:58:08', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(20449, 'gachort', 'Connexion', 'login=gachort', '2009-04-07', '16:58:08', NULL, 0, NULL),
 (20450, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=355', '2009-04-07', '16:58:10', NULL, 0, NULL),
 (20451, 'gachort', 'Connexion', 'login=gachort', '2009-04-07', '16:58:12', NULL, 0, NULL),
 (20452, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=355', '2009-04-07', '16:58:13', NULL, 0, NULL),
@@ -20728,8 +20580,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (20844, 'fdarriet', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2248', '2009-04-09', '10:33:44', '00:00:33', 0, 'Scrollbar inactive'),
 (20845, 'ddaniaupotter', 'Connexion', 'login=ddaniaupotter', '2009-04-09', '10:39:06', NULL, 0, NULL),
 (20846, 'ddaniaupotter', 'Afficher une structure (cours/forum)', 'IDForum=355', '2009-04-09', '10:39:08', NULL, 0, NULL),
-(20847, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2584', '2009-04-09', '10:39:18', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(20847, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2584', '2009-04-09', '10:39:18', NULL, 0, NULL),
 (20848, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2585', '2009-04-09', '10:39:54', NULL, 0, NULL),
 (20849, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2594', '2009-04-09', '10:40:26', NULL, 0, NULL),
 (20850, 'ddaniaupotter', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2596', '2009-04-09', '10:40:57', NULL, 0, NULL),
@@ -21127,8 +20978,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (21242, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=2677', '2009-04-11', '08:56:30', '00:00:02', 0, 'Scrollbar inactive'),
 (21243, 'gachort', 'Répondre à un message', 'IDForum=332,IDMsg=2682,IDParent=2681', '2009-04-11', '08:57:04', '00:00:46', 0, NULL),
 (21244, 'gachort', 'Citer un message', 'IDForum=332,IDMsg=2681', '2009-04-11', '08:57:04', NULL, 21243, NULL),
-(21245, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=354', '2009-04-11', '08:57:33', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(21245, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=354', '2009-04-11', '08:57:33', NULL, 0, NULL),
 (21246, 'tdelille', 'Répondre à un message', 'IDForum=354,IDMsg=2683,IDParent=2677', '2009-04-11', '08:57:42', '00:01:06', 0, NULL),
 (21247, 'tdelille', 'Citer un message', 'IDForum=354,IDMsg=2677', '2009-04-11', '08:57:42', NULL, 21246, NULL),
 (21248, 'gachort', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=2677', '2009-04-11', '08:58:09', NULL, 0, NULL),
@@ -21511,8 +21361,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (21625, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=354', '2009-04-11', '17:28:12', NULL, 0, NULL),
 (21626, 'fdarriet', 'Afficher une structure (cours/forum)', 'IDForum=340', '2009-04-11', '17:28:23', NULL, 0, NULL),
 (21627, 'gachort', 'Afficher le contenu d''un message', 'IDForum=354,IDMsg=2715', '2009-04-11', '17:28:24', '00:01:13', 0, 'Scrollbar inactive'),
-(21628, 'gachort', 'Répondre à un message', 'IDForum=354,IDMsg=2717,IDParent=2715', '2009-04-11', '17:30:22', '00:00:41', 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(21628, 'gachort', 'Répondre à un message', 'IDForum=354,IDMsg=2717,IDParent=2715', '2009-04-11', '17:30:22', '00:00:41', 0, NULL),
 (21629, 'gachort', 'Citer un message', 'IDForum=354,IDMsg=2715', '2009-04-11', '17:30:22', NULL, 21628, NULL),
 (21630, 'mdanet', 'Afficher une structure (cours/forum)', 'IDForum=339', '2009-04-11', '17:43:06', NULL, 0, NULL),
 (21631, 'mdanet', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2698', '2009-04-11', '17:43:16', NULL, 0, NULL),
@@ -21909,8 +21758,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (22022, 'ddaniaupotter', 'Bouger la scrollbar en bas', 'IDForum=332,IDMsg=2653,ScrollVertical', '2009-04-13', '09:59:37', NULL, 22021, NULL),
 (22023, 'ddaniaupotter', 'Bouger la scrollbar en bas', 'IDForum=332,IDMsg=2653,ScrollVertical', '2009-04-13', '09:59:37', NULL, 22021, NULL),
 (22024, 'ddaniaupotter', 'Bouger la scrollbar en bas', 'IDForum=332,IDMsg=2653,ScrollVertical', '2009-04-13', '09:59:39', NULL, 22021, NULL),
-(22025, 'ddaniaupotter', 'Bouger la scrollbar en bas', 'IDForum=332,IDMsg=2653,ScrollVertical', '2009-04-13', '09:59:44', NULL, 22021, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(22025, 'ddaniaupotter', 'Bouger la scrollbar en bas', 'IDForum=332,IDMsg=2653,ScrollVertical', '2009-04-13', '09:59:44', NULL, 22021, NULL),
 (22026, 'ddaniaupotter', 'Bouger la scrollbar en bas', 'IDForum=332,IDMsg=2653,ScrollVertical', '2009-04-13', '09:59:45', NULL, 22021, NULL),
 (22027, 'ddaniaupotter', 'Bouger la scrollbar en bas', 'IDForum=332,IDMsg=2653,ScrollVertical', '2009-04-13', '09:59:52', NULL, 22021, NULL),
 (22028, 'ddaniaupotter', 'Bouger la scrollbar en bas - afficher la fin du message', 'IDForum=332,IDMsg=2653,ScrollVertical', '2009-04-13', '09:59:52', NULL, 22021, NULL),
@@ -22311,8 +22159,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (22423, 'fdarriet', 'Afficher une structure (cours/forum)', 'IDForum=341', '2009-04-14', '22:06:04', NULL, 0, NULL),
 (22424, 'fdarriet', 'Afficher une structure (cours/forum)', 'IDForum=339', '2009-04-14', '22:06:10', NULL, 0, NULL),
 (22425, 'fdarriet', 'Afficher une structure (cours/forum)', 'IDForum=337', '2009-04-14', '22:06:35', NULL, 0, NULL),
-(22426, 'mdanet', 'Connexion', 'login=mdanet', '2009-04-14', '22:27:34', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(22426, 'mdanet', 'Connexion', 'login=mdanet', '2009-04-14', '22:27:34', NULL, 0, NULL),
 (22427, 'mdanet', 'Afficher une structure (cours/forum)', 'IDForum=339', '2009-04-14', '22:27:37', NULL, 0, NULL),
 (22428, 'mdanet', 'Afficher une structure (cours/forum)', 'IDForum=340', '2009-04-14', '22:27:43', NULL, 0, NULL),
 (22429, 'mdanet', 'Afficher le contenu d''un message', 'IDForum=340,IDMsg=2785', '2009-04-14', '22:27:46', NULL, 0, NULL),
@@ -22709,8 +22556,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (22820, 'mdanet', 'Afficher une structure (cours/forum)', 'IDForum=337', '2009-04-17', '17:43:20', NULL, 0, NULL),
 (22821, 'mdanet', 'Afficher une structure (cours/forum)', 'IDForum=339', '2009-04-17', '17:43:30', NULL, 0, NULL),
 (22822, 'mdanet', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2054', '2009-04-17', '17:45:50', NULL, 0, NULL),
-(22823, 'fdarriet', 'Connexion', 'login=fdarriet', '2009-04-17', '17:46:04', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(22823, 'fdarriet', 'Connexion', 'login=fdarriet', '2009-04-17', '17:46:04', NULL, 0, NULL),
 (22824, 'fdarriet', 'Afficher une structure (cours/forum)', 'IDForum=339', '2009-04-17', '17:46:06', NULL, 0, NULL),
 (22825, 'fdarriet', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2812', '2009-04-17', '17:46:31', '00:00:58', 0, 'Scrollbar inactive'),
 (22826, 'fdarriet', 'Répondre à un message', 'IDForum=339,IDMsg=2814,IDParent=2812', '2009-04-17', '18:05:07', '00:17:34', 0, NULL),
@@ -23104,8 +22950,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (23214, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2830', '2009-04-20', '16:39:04', NULL, 0, NULL),
 (23215, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2831', '2009-04-20', '16:39:37', '00:00:07', 0, 'Scrollbar inactive'),
 (23216, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2832', '2009-04-20', '16:39:48', '00:00:05', 0, 'Scrollbar inactive'),
-(23217, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2833', '2009-04-20', '16:39:57', '00:00:09', 0, 'Scrollbar inactive');
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(23217, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2833', '2009-04-20', '16:39:57', '00:00:09', 0, 'Scrollbar inactive'),
 (23218, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2837', '2009-04-20', '16:40:10', '00:00:02', 0, 'Scrollbar inactive'),
 (23219, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2838', '2009-04-20', '16:40:17', NULL, 0, NULL),
 (23220, 'cdejean', 'Download un fichier dans le message', 'IDForum=339,IDMsg=2838,IDFile=70', '2009-04-20', '16:40:29', NULL, 23219, NULL),
@@ -23505,8 +23350,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (23614, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=341', '2009-04-22', '19:49:15', NULL, 0, NULL),
 (23615, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=341,IDMsg=2841', '2009-04-22', '19:49:18', '00:00:02', 0, 'Scrollbar inactive'),
 (23616, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=341,IDMsg=2749', '2009-04-22', '19:49:21', '00:00:08', 0, 'Scrollbar inactive'),
-(23617, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=341,IDMsg=2841', '2009-04-22', '19:49:30', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(23617, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=341,IDMsg=2841', '2009-04-22', '19:49:30', NULL, 0, NULL),
 (23618, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=358', '2009-04-22', '19:49:44', NULL, 0, NULL),
 (23619, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=358,IDMsg=2847', '2009-04-22', '19:49:47', NULL, 0, NULL),
 (23620, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=359', '2009-04-22', '19:50:34', NULL, 0, NULL),
@@ -23912,8 +23756,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (24020, 'cevanen', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2632', '2009-04-24', '16:48:59', NULL, 0, NULL),
 (24021, 'cevanen', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2603', '2009-04-24', '16:49:16', '00:01:14', 0, NULL),
 (24022, 'cevanen', 'Bouger la scrollbar en bas', 'IDForum=355,IDMsg=2603,ScrollVertical', '2009-04-24', '23:49:37', NULL, 24021, NULL),
-(24023, 'cevanen', 'Bouger la scrollbar en bas - afficher la fin du message', 'IDForum=355,IDMsg=2603,ScrollVertical', '2009-04-24', '23:50:31', NULL, 24021, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(24023, 'cevanen', 'Bouger la scrollbar en bas - afficher la fin du message', 'IDForum=355,IDMsg=2603,ScrollVertical', '2009-04-24', '23:50:31', NULL, 24021, NULL),
 (24024, 'cevanen', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2674', '2009-04-24', '16:50:33', '00:00:32', 0, 'Scrollbar inactive'),
 (24025, 'cevanen', 'Afficher le contenu d''un message', 'IDForum=355,IDMsg=2660', '2009-04-24', '16:51:08', NULL, 0, NULL),
 (24026, 'cevanen', 'Afficher une structure (cours/forum)', 'IDForum=329', '2009-04-24', '16:51:53', NULL, 0, NULL),
@@ -24324,8 +24167,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (24431, 'mdanet', 'Afficher le contenu d''un message', 'IDForum=16,IDMsg=2909', '2009-04-26', '01:38:57', NULL, 0, NULL),
 (24432, 'mdanet', 'Afficher le contenu d''un message', 'IDForum=16,IDMsg=2910', '2009-04-26', '01:39:29', NULL, 0, NULL),
 (24433, 'jvasseur', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2901', '2009-04-26', '03:19:01', NULL, 0, NULL),
-(24434, 'jvasseur', 'Download un fichier dans le message', 'IDForum=339,IDMsg=2901,IDFile=75', '2009-04-26', '03:19:28', NULL, 24433, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(24434, 'jvasseur', 'Download un fichier dans le message', 'IDForum=339,IDMsg=2901,IDFile=75', '2009-04-26', '03:19:28', NULL, 24433, NULL),
 (24435, 'jvasseur', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2902', '2009-04-26', '03:21:33', NULL, 0, NULL),
 (24436, 'gachort', 'Connexion', 'login=gachort', '2009-04-26', '03:21:35', NULL, 0, NULL),
 (24437, 'gachort', 'Afficher une structure (cours/forum)', 'IDForum=355', '2009-04-26', '03:21:36', NULL, 0, NULL),
@@ -24726,8 +24568,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (24832, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=355', '2009-04-26', '15:47:04', NULL, 0, NULL),
 (24833, 'mwollenburger', 'Afficher une structure (cours/forum)', 'IDForum=7', '2009-04-26', '15:47:19', NULL, 0, NULL),
 (24834, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=2938', '2009-04-26', '15:47:29', NULL, 0, NULL),
-(24835, 'tdelille', 'Connexion', 'login=tdelille', '2009-04-26', '15:53:18', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(24835, 'tdelille', 'Connexion', 'login=tdelille', '2009-04-26', '15:53:18', NULL, 0, NULL),
 (24836, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=7', '2009-04-26', '15:53:19', NULL, 0, NULL),
 (24837, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=2938', '2009-04-26', '15:53:25', '00:01:27', 0, 'Scrollbar inactive'),
 (24838, 'tdelille', 'Répondre à un message', 'IDForum=7,IDMsg=2939,IDParent=2938', '2009-04-26', '15:55:22', '00:00:28', 0, NULL),
@@ -25127,8 +24968,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (25232, 'jvasseur', 'Bouger la scrollbar en bas', 'IDForum=17,IDMsg=2958,ScrollVertical', '2009-04-27', '20:43:39', NULL, 25230, NULL),
 (25233, 'jvasseur', 'Bouger la scrollbar en bas', 'IDForum=17,IDMsg=2958,ScrollVertical', '2009-04-27', '20:43:40', NULL, 25230, NULL),
 (25234, 'jvasseur', 'Bouger la scrollbar en bas', 'IDForum=17,IDMsg=2958,ScrollVertical', '2009-04-27', '20:43:40', NULL, 25230, NULL),
-(25235, 'jvasseur', 'Bouger la scrollbar en bas', 'IDForum=17,IDMsg=2958,ScrollVertical', '2009-04-27', '20:43:41', NULL, 25230, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(25235, 'jvasseur', 'Bouger la scrollbar en bas', 'IDForum=17,IDMsg=2958,ScrollVertical', '2009-04-27', '20:43:41', NULL, 25230, NULL),
 (25236, 'jvasseur', 'Bouger la scrollbar en bas', 'IDForum=17,IDMsg=2958,ScrollVertical', '2009-04-27', '20:43:41', NULL, 25230, NULL),
 (25237, 'jvasseur', 'Bouger la scrollbar en bas', 'IDForum=17,IDMsg=2958,ScrollVertical', '2009-04-27', '20:43:48', NULL, 25230, NULL),
 (25238, 'jvasseur', 'Bouger la scrollbar en bas', 'IDForum=17,IDMsg=2958,ScrollVertical', '2009-04-27', '20:43:49', NULL, 25230, NULL),
@@ -25525,8 +25365,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (25629, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2877', '2009-04-28', '08:33:46', NULL, 0, NULL),
 (25630, 'mwollenburger', 'Afficher le contenu d''un message', 'IDForum=7,IDMsg=2989', '2009-04-28', '08:33:49', NULL, 0, NULL),
 (25631, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2875', '2009-04-28', '08:34:35', '00:00:14', 0, 'Scrollbar inactive'),
-(25632, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2876', '2009-04-28', '08:34:52', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(25632, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2876', '2009-04-28', '08:34:52', NULL, 0, NULL),
 (25633, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2880', '2009-04-28', '08:35:28', '00:00:06', 0, 'Scrollbar inactive'),
 (25634, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2886', '2009-04-28', '08:35:38', NULL, 0, NULL),
 (25635, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=2893', '2009-04-28', '08:36:00', '00:00:07', 0, 'Scrollbar inactive'),
@@ -25923,8 +25762,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (26026, 'fdarriet', 'Afficher une structure (cours/forum)', 'IDForum=339', '2009-04-29', '10:17:21', NULL, 0, NULL),
 (26027, 'mdanet', 'Connexion', 'login=mdanet', '2009-04-29', '10:24:15', NULL, 0, NULL),
 (26028, 'mdanet', 'Afficher une structure (cours/forum)', 'IDForum=17', '2009-04-29', '10:24:16', NULL, 0, NULL),
-(26029, 'mdanet', 'Afficher le contenu d''un message', 'IDForum=17,IDMsg=3021', '2009-04-29', '10:24:21', '00:09:18', 0, 'Scrollbar inactive');
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(26029, 'mdanet', 'Afficher le contenu d''un message', 'IDForum=17,IDMsg=3021', '2009-04-29', '10:24:21', '00:09:18', 0, 'Scrollbar inactive'),
 (26030, 'tdelille', 'Connexion', 'login=tdelille', '2009-04-29', '10:27:45', NULL, 0, NULL),
 (26031, 'tdelille', 'Afficher une structure (cours/forum)', 'IDForum=329', '2009-04-29', '10:27:49', NULL, 0, NULL),
 (26032, 'tdelille', 'Afficher le contenu d''un message', 'IDForum=329,IDMsg=3020', '2009-04-29', '10:27:56', NULL, 0, NULL),
@@ -26331,8 +26169,7 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (26433, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=3039', '2009-05-01', '15:06:42', '00:01:51', 0, 'Scrollbar inactive'),
 (26434, 'cdejean', 'Répondre à un message', 'IDForum=339,IDMsg=3040,IDParent=3039', '2009-05-01', '15:12:10', '00:03:34', 0, NULL),
 (26435, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=3038', '2009-05-01', '15:12:29', '00:00:10', 0, 'Scrollbar inactive'),
-(26436, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=3037', '2009-05-01', '15:12:53', NULL, 0, NULL);
-INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, `Heure`, `Delai`, `RefTran`, `Commentaire`) VALUES
+(26436, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=3037', '2009-05-01', '15:12:53', NULL, 0, NULL),
 (26437, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=3036', '2009-05-01', '15:13:25', '00:00:10', 0, 'Scrollbar inactive'),
 (26438, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=3035', '2009-05-01', '15:13:43', NULL, 0, NULL),
 (26439, 'cdejean', 'Afficher le contenu d''un message', 'IDForum=339,IDMsg=3010', '2009-05-01', '15:14:12', NULL, 0, NULL),
@@ -26407,59 +26244,19 @@ INSERT INTO `transition` (`IDTran`, `Utilisateur`, `Titre`, `Attribut`, `Date`, 
 (26508, 'admin', 'Connexion', 'login=admin', '2010-05-10', '14:25:54', NULL, 0, NULL),
 (26509, 'admin', 'Afficher une structure (cours/forum)', 'IDForum=326', '2010-05-10', '14:26:00', NULL, 0, NULL),
 (26510, 'admin', 'Afficher le contenu d''un message', 'IDForum=326,IDMsg=877', '2010-05-10', '14:26:42', '00:00:07', 0, 'Scrollbar inactive'),
-(26511, 'admin', 'Afficher le contenu d''un message', 'IDForum=326,IDMsg=879', '2010-05-10', '14:26:52', NULL, 0, NULL);
+(26511, 'admin', 'Afficher le contenu d''un message', 'IDForum=326,IDMsg=879', '2010-05-10', '14:26:52', NULL, 0, NULL),]
 
--- --------------------------------------------------------
+######################################################################################
 
---
--- Table structure for table `typeu`
---
-
-CREATE TABLE IF NOT EXISTS `typeu` (
-  `IDTypeU` smallint(6) NOT NULL AUTO_INCREMENT,
-  `Titre` varchar(70) NOT NULL DEFAULT '',
-  PRIMARY KEY (`IDTypeU`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Contient les informations de différents types d''utilisateur' AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `typeu`
---
-
-INSERT INTO `typeu` (`IDTypeU`, `Titre`) VALUES
+typeu=[
 (1, 'Membre inscrit'),
 (2, 'Invite avec mot de passe'),
 (3, 'invite sans mot de passe'),
-(4, 'Anonyme');
+(4, 'Anonyme'),]
 
--- --------------------------------------------------------
+######################################################################################
 
---
--- Table structure for table `userfiles`
---
-
-CREATE TABLE IF NOT EXISTS `userfiles` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `User` varchar(70) NOT NULL,
-  `IDForum` bigint(20) DEFAULT NULL,
-  `IDMsg` bigint(20) NOT NULL,
-  `Filenameo` varchar(70) NOT NULL,
-  `Filenamer` varchar(20) NOT NULL,
-  `Filetype` varchar(5) DEFAULT NULL,
-  `Filesize` varchar(12) DEFAULT NULL,
-  `Dateupload` date NOT NULL DEFAULT '0000-00-00',
-  `Timeupload` time NOT NULL DEFAULT '00:00:00',
-  `Date_la` date DEFAULT '0000-00-00',
-  `Time_la` time DEFAULT '00:00:00',
-  `Nbdownload` bigint(20) DEFAULT '0',
-  `Filestatus` tinyint(4) DEFAULT '0',
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=96 ;
-
---
--- Dumping data for table `userfiles`
---
-
-INSERT INTO `userfiles` (`ID`, `User`, `IDForum`, `IDMsg`, `Filenameo`, `Filenamer`, `Filetype`, `Filesize`, `Dateupload`, `Timeupload`, `Date_la`, `Time_la`, `Nbdownload`, `Filestatus`) VALUES
+userfiles=[
 (1, 'mwollenburger', 7, 1218, 'Visite musee.doc', '20090215142525.doc', '.doc', '14.50 KB', '2009-02-15', '14:25:44', '2009-02-16', '02:33:48', 0, 0),
 (2, 'tdelille', 353, 1530, 'Festivals Tat.doc', '20090228013652.doc', '.doc', '46.00 KB', '2009-02-28', '01:38:58', '2009-03-18', '04:25:02', 3, 0),
 (3, 'ddaniaupotter', 353, 1543, 'tableau festival t+d.pdf', '20090301102246.pdf', '.pdf', '120.48 KB', '2009-03-01', '10:23:06', '2009-03-22', '12:45:22', 4, 0),
@@ -26554,119 +26351,10 @@ INSERT INTO `userfiles` (`ID`, `User`, `IDForum`, `IDMsg`, `Filenameo`, `Filenam
 (92, 'jvasseur', 17, 2986, 'Scene4 - prise finale_questions.doc', '20090428041658.doc', '.doc', '29.00 KB', '2009-04-28', '04:17:11', '2009-04-28', '06:33:01', 2, 0),
 (93, 'mdanet', 339, 3024, 'Guide Pedagogique.doc', '20090429134731.doc', '.doc', '186.50 KB', '2009-04-29', '13:47:47', '2009-04-29', '14:34:24', 2, 0),
 (94, 'jvasseur', 339, 3032, 'Guide_Pedagogique.doc', '20090429190015.doc', '.doc', '186.00 KB', '2009-04-29', '19:00:25', '2009-04-30', '08:47:26', 0, 0),
-(95, 'mgodwod', 339, 3034, 'Objectifs.doc', '20090430093324.doc', '.doc', '45.50 KB', '2009-04-30', '09:34:53', '2009-04-30', '10:10:39', 2, 0);
+(95, 'mgodwod', 339, 3034, 'Objectifs.doc', '20090430093324.doc', '.doc', '45.50 KB', '2009-04-30', '09:34:53', '2009-04-30', '10:10:39', 2, 0),]
 
--- --------------------------------------------------------
+########################################
+usertool_param=[
+(1, 'sortout', 'DESC', NULL, 'colour', '1', NULL, 'timeinterval', '2', NULL, 'scrollspeed', '2', NULL, 'madeth'),]
 
---
--- Table structure for table `usertool`
---
-
-CREATE TABLE IF NOT EXISTS `usertool` (
-  `IDUser` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(20) NOT NULL DEFAULT '',
-  `Surname` varchar(20) NOT NULL DEFAULT '',
-  `Email` varchar(50) DEFAULT NULL,
-  `Login` varchar(20) NOT NULL DEFAULT '',
-  `Password` varchar(20) NOT NULL DEFAULT '',
-  `Type` varchar(20) NOT NULL DEFAULT '',
-  `Comment` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`IDUser`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `usertool`
---
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `usertool_notes`
---
-
-CREATE TABLE IF NOT EXISTS `usertool_notes` (
-  `IDNote` int(11) NOT NULL AUTO_INCREMENT,
-  `Username` varchar(20) NOT NULL DEFAULT '',
-  `Share` tinyint(4) NOT NULL DEFAULT '0',
-  `Nbmax` tinyint(4) NOT NULL DEFAULT '0',
-  `Note` text,
-  `Date` date NOT NULL DEFAULT '0000-00-00',
-  `Lastaccess` date NOT NULL DEFAULT '0000-00-00',
-  PRIMARY KEY (`IDNote`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `usertool_notes`
---
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `usertool_param`
---
-
-CREATE TABLE IF NOT EXISTS `usertool_param` (
-  `IDParam` int(11) NOT NULL AUTO_INCREMENT,
-  `Paramname1` varchar(30) DEFAULT 'sortout',
-  `Paramvalue1` varchar(5) DEFAULT 'DESC',
-  `Description1` varchar(50) DEFAULT NULL,
-  `Paramname2` varchar(30) DEFAULT 'colour',
-  `Paramvalue2` varchar(5) DEFAULT '1',
-  `Description2` varchar(50) DEFAULT NULL,
-  `Paramname3` varchar(30) DEFAULT 'timeinterval',
-  `Paramvalue3` varchar(5) DEFAULT '8',
-  `Description3` varchar(50) DEFAULT NULL,
-  `Paramname4` varchar(30) DEFAULT 'scrollspeed',
-  `Paramvalue4` varchar(5) DEFAULT '2',
-  `Description4` varchar(50) DEFAULT NULL,
-  `Username` varchar(20) NOT NULL DEFAULT '',
-  PRIMARY KEY (`IDParam`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `usertool_param`
---
-
-INSERT INTO `usertool_param` (`IDParam`, `Paramname1`, `Paramvalue1`, `Description1`, `Paramname2`, `Paramvalue2`, `Description2`, `Paramname3`, `Paramvalue3`, `Description3`, `Paramname4`, `Paramvalue4`, `Description4`, `Username`) VALUES
-(1, 'sortout', 'DESC', NULL, 'colour', '1', NULL, 'timeinterval', '2', NULL, 'scrollspeed', '2', NULL, 'madeth');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `usertool_sharenote`
---
-
-CREATE TABLE IF NOT EXISTS `usertool_sharenote` (
-  `IDShare` int(11) NOT NULL AUTO_INCREMENT,
-  `Username` varchar(20) NOT NULL DEFAULT '',
-  `IDNote` int(11) NOT NULL DEFAULT '0',
-  `Dateshare` date NOT NULL DEFAULT '0000-00-00',
-  `Lastaccess` date NOT NULL DEFAULT '0000-00-00',
-  PRIMARY KEY (`IDShare`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `usertool_sharenote`
---
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `utilisateur`
---
-
-CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `IDU` bigint(20) NOT NULL AUTO_INCREMENT,
-  `Usager` varchar(70) NOT NULL DEFAULT '',
-  `Trace` tinyint(4) NOT NULL DEFAULT '0',
-  `IDTypeU` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`IDU`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Informations d''utilisateur a tracer' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `utilisateur`
---
 
